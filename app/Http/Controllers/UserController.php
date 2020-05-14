@@ -120,6 +120,10 @@ class UserController extends Controller
     // Permet à un enseignant de consulter les candidatures selon le niveau
     public function edit($id)
     {
+        request()->validate([
+            'niveau'=>['required']
+        ]);
+        
         $stat1=DB::table('candidature')
         ->join('formation','formation.formID','=','candidature.formation_formID')
         ->join('statut','statut.ID','=','candidature.statut')
