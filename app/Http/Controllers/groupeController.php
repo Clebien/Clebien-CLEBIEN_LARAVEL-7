@@ -122,7 +122,7 @@ class groupeController extends Controller
             'adresse'=>request('adresse'),
             'Tel'=>request('Tel'),
             'email'=>request('email'),
-            'passwd'=>bcrypt(request('password'))
+            'passwd'=>request('password')
         ]);
 
             $success= "Modification effectuée, Veuillez vous reconnecter";
