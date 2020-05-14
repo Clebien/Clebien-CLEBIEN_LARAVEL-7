@@ -130,7 +130,7 @@
   <body>
     <div class="main-block">
       <h1>Sign in</h1>
-      <form action="validation" method='POST'>
+      {!! Form::open(['url' => 'validationController', 'method' => 'post']) !!}
         {{csrf_field()}}
         <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
         <input type="text" name="email" class="form-control-plaintext" placeholder="email@example.com" value="{{ old('email') }}">
@@ -150,7 +150,7 @@
         <div class="btn-block">
           <button type="submit" >Valider</button>
         </div>
-      </form>
+        {!! Form::close() !!}
     </div>
   </body>
 </html>
