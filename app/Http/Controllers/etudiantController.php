@@ -90,8 +90,7 @@ class etudiantController extends Controller
                 }
                 else
                 {
-                    $var ="Vous n'êtes pas encore inscrit";
-                    return view('connection',compact('var'));
+                    return redirect()->back()->with('var','Vous n\'êtes pas encore inscrit');
                 }
                 
             }else if(request('statut') == 2){
@@ -121,8 +120,7 @@ class etudiantController extends Controller
                 }
                 else
                 {
-                    $err ="Utilisateur inexistant";
-                    return view('connection',compact('err'));
+                    return redirect()->back()->with('err','Utilisateur inexistant');
                 }
                
             }
