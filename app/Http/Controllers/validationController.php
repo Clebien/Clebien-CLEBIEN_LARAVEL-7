@@ -42,7 +42,10 @@ class validationController extends Controller
        ->where('email',request('email'))
        ->take(1)
        ->value('ID');
-
+        if(empty($id)){
+            return redirect()->back()->with('error','Email incorrect');
+            
+        }
        DB::table('etudiant')
         ->where('ID',$id)
         ->update([
