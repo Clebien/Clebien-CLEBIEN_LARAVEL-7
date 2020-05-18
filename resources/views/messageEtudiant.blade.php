@@ -8,6 +8,7 @@
 			<div class="panel-heading">Contactez-nous</div>
 			<div class="panel-body"> 
 				{!! Form::open(['url' => 'groupe/contact', 'method' => 'post']) !!}
+                {{csrf_field()}}
 					<div class="form-group {!! $errors->has('nom') ? 'has-error' : '' !!}">
 						{!! Form::text('nom', null, ['class' => 'form-control', 'placeholder' => 'Votre nom']) !!}
 						{!! $errors->first('nom', '<small class="text-danger">:message</small>') !!}
