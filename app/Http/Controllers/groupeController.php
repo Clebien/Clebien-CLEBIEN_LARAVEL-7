@@ -101,32 +101,57 @@ class groupeController extends Controller
 // mettre à jour le profil de l'etudiant
     public function update($id)
     {  
-        request()->validate([
-            'numID'=>['required','alpha_num','min:8','max:8'],
-            'nom'=>['required','string'],
-            'prenom'=>['required','string'],
-            'dateNaiss'=>['required','date'],
-            'adresse'=>['required','string'],
-            'Tel'=>['required','size:10'],
-            'email'=>['required','email'],
-            'password'=>['required','confirmed','min:8'],
-            'password_confirmation'=>['required'],
-        ]);
-        DB::table('etudiant')
-        ->where('ID','=',$id)
-        ->update([
-            'numID'=>request('numID'),
-            'nom'=>request('nom'),
-            'prenom'=>request('prenom'),
-            'dateNaiss'=>request('dateNaiss'),
-            'adresse'=>request('adresse'),
-            'Tel'=>request('Tel'),
-            'email'=>request('email'),
-            'passwd'=>request('password')
-        ]);
+        
+        if(request('password')!=null)
+        {
+                request()->validate([
+                    'numID'=>['required','alpha_num','min:8','max:8'],
+                    'nom'=>['required','string'],
+                    'prenom'=>['required','string'],
+                    'dateNaiss'=>['required','date'],
+                    'adresse'=>['required','string'],
+                    'Tel'=>['required','size:10'],
+                    'email'=>['required','email'],
+                    'password'=>['required','confirmed','min:8'],
+                    'password_confirmation'=>['required'],
+                ]);
+                DB::table('etudiant')
+                ->where('ID','=',$id)
+                ->update([
+                    'numID'=>request('numID'),
+                    'nom'=>request('nom'),
+                    'prenom'=>request('prenom'),
+                    'dateNaiss'=>request('dateNaiss'),
+                    'adresse'=>request('adresse'),
+                    'Tel'=>request('Tel'),
+                    'email'=>request('email'),
+                    'passwd'=>request('password')
+                ]);
+        }
+        else{
 
-            $success= "Modification effectuée, Veuillez vous reconnecter";
-            return view('connection',compact('success'));
+                request()->validate([
+                    'numID'=>['required','alpha_num','min:8','max:8'],
+                    'nom'=>['required','string'],
+                    'prenom'=>['required','string'],
+                    'dateNaiss'=>['required','date'],
+                    'adresse'=>['required','string'],
+                    'Tel'=>['required','size:10'],
+                    'email'=>['required','email'],
+                ]);
+                DB::table('etudiant')
+                ->where('ID','=',$id)
+                ->update([
+                    'numID'=>request('numID'),
+                    'nom'=>request('nom'),
+                    'prenom'=>request('prenom'),
+                    'dateNaiss'=>request('dateNaiss'),
+                    'adresse'=>request('adresse'),
+                    'Tel'=>request('Tel'),
+                ]);
+        }
+
+            return redirect('/connection')->with('success','Profil mis à jour reconnectez-vous');
 
         
     }
