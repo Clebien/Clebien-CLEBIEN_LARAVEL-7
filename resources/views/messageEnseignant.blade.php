@@ -11,6 +11,12 @@
 			<div class="panel-heading">Contactez-nous</div>
 			<div class="panel-body"> 
 				{!! Form::open(['url' => 'validation/contact', 'method' => 'post']) !!}
+                		@if(session('success'))
+                          <div class="panel panel-success">
+                          <div class="panel-heading" align="center">{{ session('success')}} </div>
+                          </div>
+                        @endif
+                        {{csrf_field()}}
 					<div class="form-group {!! $errors->has('nom') ? 'has-error' : '' !!}">
 						{!! Form::text('nom', null, ['class' => 'form-control', 'placeholder' => 'Votre nom']) !!}
 						{!! $errors->first('nom', '<small class="text-danger">:message</small>') !!}
