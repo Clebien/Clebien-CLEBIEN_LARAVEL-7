@@ -188,15 +188,7 @@ class UserController extends Controller
                 'email'=>request('email'),
             ]);
         }
-        $enseignant = DB::table('enseignants')
-        ->where('id',$id)
-        ->get();
-        $success = "Profil mis à jour";
-
-        foreach($enseignant as $enseignant)
-        {
-            return view('espaceEnseignant',compact('enseignant','success'));
-        }
+        return redirect('/connection')->with('success','Profil mis à jour reconnectez-vous');
 
     }
 
