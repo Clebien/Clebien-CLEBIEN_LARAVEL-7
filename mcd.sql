@@ -7,11 +7,6 @@
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -203,12 +198,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 
 --
--- Index pour la table `administrateur`
---
-ALTER TABLE `administrateur`
-  ADD PRIMARY KEY (`adminID`);
-
---
 -- Index pour la table `candidature`
 --
 ALTER TABLE `candidature`
@@ -333,8 +322,4 @@ ALTER TABLE `candidature`
 --
 ALTER TABLE `etudiant`
   ADD CONSTRAINT `formation` FOREIGN KEY (`formation`) REFERENCES `formation` (`formID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
