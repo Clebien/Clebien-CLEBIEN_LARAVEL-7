@@ -79,16 +79,7 @@ class validationController extends Controller
             'contenu'=>request('contenu')
         ]);
 
-        $stat=DB::table('enseignants')
-        ->where('email','=',request('login'))
-        ->get();
-
-        $enseignant = new Collection($stat);
-        $success = "Message envoyé";
-        foreach($enseignant as $enseignant)
-        {
-            return view('espaceEnseignant',compact('enseignant','success'));
-        }
+        return redirect()->back()->with('success','Message envoyé');
     }
 
     /**
