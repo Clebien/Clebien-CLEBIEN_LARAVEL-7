@@ -33,7 +33,11 @@
                           <div class="panel panel-danger">
                           <div class="panel-heading" align="center">{{ session('err')}}</div>
                           </div>
-
+                        @endif
+                        @if(session('success'))
+                          <div class="panel panel-success">
+                          <div class="panel-heading" align="center">{{ session('success')}} </div>
+                          </div>
                         @endif
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Adresse mail</label>
