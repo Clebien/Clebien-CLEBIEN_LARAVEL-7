@@ -14,21 +14,18 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {return view('HOME'); })->name('HOME');
 Route::get('/inscription', function () {return view('inscription'); });
 Route::get('/firstConnection',function(){ return view('validation'); });
-Route::get('/connection',function(){ return view('connection'); });
+Route::post('validationController', 'validationController@create');
 Route::get('/connection/espaceEtudiant',function(){  return view('espaceEtudiant'); });
-// return la vue de candidature
-Route::get('/espaceEtudiant/candidature','etudiantController@vueCandidature');
-// permet de sauvegarder la candidature dans la BD
-Route::post('/candidater', 'etudiantController@candidate');
+Route::get('/espaceEtudiant/candidature/{id}','etudiantController@vueCandidature');
+Route::post('/candidater/{id}', 'etudiantController@candidate');
 Route::get('/espaceEtudiant/contact','groupeController@index');
 Route::post('etudiantController', 'etudiantController@sauvegarder');
-Route::post('/resutat', 'etudiantController@show');
-Route::post('validationController', 'validationController@create');
+//Route::post('/resutat', 'etudiantController@show');
 Route::resource('validation','validationController');
-// Message
+Route::get('/', function () {return view('HOME'); })->name('HOME');
+Route::get('/connection',function(){ return view('connection'); });
 Route::post('validation/contact','validationController@store');
 Route::post('groupe/contact', 'groupeController@create');
 Route::post('user/connection', 'etudiantController@store');
