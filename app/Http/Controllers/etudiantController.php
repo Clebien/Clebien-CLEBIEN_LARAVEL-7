@@ -13,11 +13,11 @@ class etudiantController extends Controller
 {
 
 // return la vue candidature
-    public function vueCandidature()
+      public function vueCandidature($id)
     {
-       return view('candidature');
+        return view('candidature',compact('id'));
     }
-
+    
 // ajoute un etudiant dans la base de données
     public function sauvegarder()
     {
@@ -128,13 +128,9 @@ class etudiantController extends Controller
     }
 
 
-    public function candidate(Request $request)
+   public function candidate(Request $request,$id)
     {
        
-        $etudiant1=DB::table('etudiant')
-        ->where('email','=',request('email'))
-        ->take(1)
-        ->value('ID');
 
         DB::table('etudiant')
         ->where('email','=',request('email'))
@@ -145,11 +141,11 @@ class etudiantController extends Controller
                 
         $verifs = DB::table('candidature')
         ->join('etudiant','etudiant.ID','=','candidature.Etudiant_ID')
-        ->where('etudiant.ID','=',$etudiant1)
+        ->where('etudiant.ID',$id)
         ->count();
 
         $stat2=DB::table('etudiant')
-        ->where('email','=',request('email'))
+        ->where('ID',$id)
         ->get();
         
         $etudiant = new Collection($stat2);
@@ -172,7 +168,7 @@ class etudiantController extends Controller
                 'cv'=>$path5,
                 'formation_formID'=>request('formation'),
                 'statut'=>1,
-                'Etudiant_ID'=>$etudiant1
+                'Etudiant_ID'=>$id
                  ]);
 
                  $success ="Candidature envoyée avec succès!";
@@ -189,7 +185,6 @@ class etudiantController extends Controller
 
         
     }
-
 
     public function show($id)
     {
