@@ -61,7 +61,7 @@
           <div class="w3-bar w3-light-grey" > 
               <a href="/inscription" class="w3-bar-item w3-button" > <i class="fa fa-home"> Home</i></a>
               <a href="/espaceEtudiant/contact" class="w3-bar-item w3-button"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-              <a href="/espaceEtudiant/candidature" class="w3-bar-item w3-button"><i class="fas fa-user-graduate"></i>Candidater</a>
+              <a href="/espaceEtudiant/candidature/{{$etudiant->ID}}" class="w3-bar-item w3-button"><i class="fas fa-user-graduate"></i>Candidater</a>
           <div class="w3-dropdown-hover">
               <button class="w3-button"><i class="fa fa-fw fa-user"></i> <small><span> {{ $etudiant->prenom }}</span></small></button>
           <div class="w3-dropdown-content w3-bar-block w3-card-4">
