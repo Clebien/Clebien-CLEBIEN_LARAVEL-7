@@ -136,8 +136,7 @@
       <div class="left-part">
         <i class="fas fa-graduation-cap"></i>
         <h1>Bienvenu sur le site de la miage Paris Nanterre</h1>
-        <p>Veuillez renseigner vos informations pour déposer votre dossier</p><br>
-        <p>ou connectez-vous</p>
+        <p>Si vous êtes un étudiant non inscrit, veuillez vous inscrire avec le formulaire sur la droite</p><br>
         <div class="btn-group">
           <a class="btn-item" href="/connection">Connection</a>
         </div>
