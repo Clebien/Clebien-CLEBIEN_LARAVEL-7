@@ -133,7 +133,7 @@ class etudiantController extends Controller
        
 
         DB::table('etudiant')
-        ->where('email','=',request('email'))
+        ->where('ID',$id)
         ->update([
             'formation'=>request('formation')
             ]);
