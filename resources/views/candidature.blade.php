@@ -1,5 +1,3 @@
-          
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -208,8 +206,10 @@
     </style>
   </head>
   <body>
+  <br>
+  <main>
     <div class="testbox">
-    <form action="/candidater" method="POST" enctype='multipart/form-data'>
+    <form action="/candidater/{{ $id}}" method="POST" enctype='multipart/form-data'>
         <div class="banner">
           <h1>Candidature</h1>
         </div>
@@ -225,10 +225,7 @@
         <div align="center"><small><span>les fichiers doivent être au format pdf</span></small></div>
         <div class="colums">
         {{csrf_field()}}
-        <div class="item">
-            <label for="name">Email<span>*</span></label>
-            <input type="email" name="email" required/>
-          </div>
+
           <div class="item">
             <label for="name">CV<span>*</span></label>
             <input type="file" name="cv" required/>
@@ -251,12 +248,10 @@
           </div>
           <div class="item" size="16">
             <label for="zip">Formation<span>*</span></label><br>
-            <select required name="formation">
-                <option value="" ></option>
-                <option value="1">Licence miage</option>
-                <option value="2">Master 1 miage</option>
-                <option value="3">Master 2 miage</option>
-            </select>
+            <div class="form-group {!! $errors->has('annuaire') ? 'has-error' : '' !!}">
+              {!! Form::select('formation', array('1'=>'Licence miage','2'=>'Master 1 miage','3'=>'Master 2 miage'),null, ['class' => 'form-control', 'placeholder' => 'Choisir un niveau']) !!}
+              {!! $errors->first('formation', '<small class="help-block">:message</small>') !!}
+            </div>
           </div>
         </div>
         <div class="btn-block">
@@ -264,5 +259,7 @@
         </div>
 				</form>
     </div>
+    </main>
+    <br><br>
   </body>
 </html>
